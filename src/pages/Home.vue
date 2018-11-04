@@ -9,12 +9,21 @@
       </f7-nav-title>
     </f7-navbar>
     <f7-block-title>{{ title }}</f7-block-title>
-    <f7-block inner>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Distinctio est aliquam officiis quaerat placeat, cum explicabo magni
-      soluta totam maxime autem minima accusamus eos suscipit dignissimos
-      corporis modi voluptatum fugiat!
-    </f7-block>
+    <GmapMap
+  :center="{lat:10, lng:10}"
+  :zoom="7"
+  map-type-id="terrain"
+  style="width: 500px; height: 300px"
+>
+  <GmapMarker
+    :key="index"
+    v-for="(m, index) in markers"
+    :position="m.position"
+    :clickable="true"
+    :draggable="true"
+    @click="center=m.position"
+  />
+</GmapMap>
   </f7-page>
 </template>
 <script>
